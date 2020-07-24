@@ -96,8 +96,48 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        # A bubble sort is the way I want to do this since space complexity is more important than time complexity here.
+        # I'll go through each number comparing it to it's right neighbor and if it's larger then I'll leave it alone
+        # and if it's smaller I'll swap it. Repeat this process until I reach the end and then loop again except
+        # ignoring the last parts of the array which will be sorted.
+
+        """
+        Make sure the robot is at the beginning of the list by seeing if I can move left
+        Set light to on
+        Check if Robot can move right
+            Pick up object
+            Move right
+            Compare current object
+                If object holding smaller don't swap, else swap
+                    If swap, set light off
+            Move left and swap to put back down
+            Move right
+        If not, check light status
+            if on then done
+            else repeat sort
+        """
+
+        while self.can_move_left():
+            self.move_left()
+
+        self.set_light_on()
+
+        while self.can_move_right():
+            self.swap_item()
+            self.move_right()
+            # If current item is greater than it returns 1 else returns -1
+            if self.compare_item() == 1:
+                self.swap_item()
+                if self.light_is_on():
+                    self.set_light_off()
+            self.move_left()
+            self.swap_item()
+            self.move_right()
+
+        if self.light_is_on():
+            return 1
+        else:
+            self.sort()
 
 
 if __name__ == "__main__":
