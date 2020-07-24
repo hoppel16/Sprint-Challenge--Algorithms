@@ -5,10 +5,10 @@
 a) The first example is O[n] as it is a linear because of the way the while loop is structured.
 
 
-b) The second example is O[n^2] because there is a nested for loop inside of the while loop.
+b) The second example is O[n * log(n)] because there is a nested for loop inside of the while loop.
 
 
-c) The last example is O[2^n] because of the recursive call.
+c) The last example is O[n] because of the recursive call.
 
 ## Exercise II
 
